@@ -1,0 +1,43 @@
+<div class="container">
+    <h2>Les Clients</h2>
+    <div>
+        <app-create></app-create>
+        </div>
+    <table mat-table [dataSource]="clients" class="mat-elevation-z8" #mytable>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        <ng-container matColumnDef="firstname">
+            <th mat-header-cell *matHeaderCellDef>First Name</th>
+            <td mat-cell *matCellDef="let t">{{t.firstname}}</td>
+        </ng-container>
+        <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef>Last Name</th>
+            <td mat-cell *matCellDef="let t">{{ t.lastname}}</td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let t">{{ t.email}}</td>
+        </ng-container>
+        <ng-container matColumnDef="phonenumber">
+            <th mat-header-cell *matHeaderCellDef>Phone Number</th>
+            <td mat-cell *matCellDef="let t">{{ t.phonenumber}}</td>
+        </ng-container>
+        <ng-container matColumnDef="_id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <td mat-cell *matCellDef="let t">
+                <a href="#" [routerLink]="['/clients/', t._id, 'view']" class="btn btn-default">
+                    <i class="bi bi-info-square-fill"></i>
+                </a>
+                <a href="#" [routerLink]="['/clients/', t._id, 'edit']" class="btn btn-default">
+                    <i class="bi bi-pencil-square" style="color:blue"></i>
+                </a>
+                
+                <button type="button" (click)=" deleteClient(t.id)" class="btn btn-default">
+                    <i class="bi bi-trash-fill" style="color:red"></i>
+                </button>
+            </td>
+        </ng-container>
+    </table>
+
+
+</div>
